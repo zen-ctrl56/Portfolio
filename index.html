@@ -189,6 +189,13 @@ body[data-v="cyber"]{--grad:linear-gradient(100deg,#00ff9c,#00b7ff)}body[data-v=
 .fs figure{position:relative;margin:0;aspect-ratio:4/3;border-radius:4px;overflow:hidden;background:linear-gradient(135deg,hsl(var(--h) 80% 55%),hsl(calc(var(--h) + 70) 85% 60%));animation:hue 9s linear infinite;transition:transform .3s}.fs figure:hover{transform:scale(1.04)}
 @keyframes hue{to{filter:hue-rotate(360deg)}}
 .fs figcaption{position:absolute;left:.8rem;bottom:.6rem;color:#fff;font-weight:600}.fs small{display:block;font-weight:400;opacity:.85}
+/* Multimedia skill cards: preserve existing filmstrip and motion */
+.fs .media-skill{min-height:220px;background:linear-gradient(145deg,hsl(var(--h) 75% 43%),hsl(calc(var(--h) + 65) 75% 30%));box-shadow:inset 0 -95px 90px -50px rgba(0,0,0,.55)}
+.fs .media-skill-num{position:absolute;top:1rem;left:1rem;color:rgba(255,255,255,.85);font:700 .7rem/1.2 monospace;letter-spacing:.14em}
+.fs .media-skill figcaption{left:1rem;right:1rem;bottom:1rem;font-size:clamp(1.2rem,2vw,1.6rem);line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.fs .media-skill small{margin-top:.5rem;font-size:.78rem;line-height:1.45;max-width:29ch}
+@media(prefers-reduced-motion:reduce){.fs .media-skill{animation:none;transition:none}}
+
 
 /* Stability, accessibility, and responsive polish */
 .vw[hidden]{display:none!important}
@@ -433,7 +440,14 @@ g('cy-lab').innerHTML=document.querySelector('#pj .hl').outerHTML.replace('id="r
 new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){g('rk2').classList.add('on');o.disconnect()}},{threshold:.2}).observe(g('rk2'));
 const TR=[['V1',[[2,18,'#8b5cf6'],[22,12,'#ec4899'],[37,25,'#fbbf24'],[65,14,'#8b5cf6'],[82,16,'#ec4899']]],['V2',[[10,14,'#ec4899'],[28,20,'#8b5cf6'],[52,10,'#fbbf24'],[70,22,'#ec4899']]],['A1',[[0,30,'#38bdf8'],[33,22,'#38bdf8'],[58,18,'#38bdf8'],[80,18,'#38bdf8']]]];
 g('tl').insertAdjacentHTML('afterbegin',TR.map(([n,c])=>`<div class="tk2" data-n="${n}">${c.map(([l,w,k])=>`<i style="left:${l}%;width:${w}%;background:${k}"></i>`).join('')}</div>`).join(''));
-g('fs').innerHTML=Array.from({length:6},(_,i)=>`<figure style="--h:${i*55+260}"><figcaption>Concept 0${i+1}<small>Visual study · coming soon</small></figcaption></figure>`).join('');
+g('fs').innerHTML=[
+ ['CapCut','Video editing · pacing, transitions & short-form cuts','01'],
+ ['After Effects','Motion graphics · compositing & animated typography','02'],
+ ['Adobe Photoshop','Photo editing · retouching & visual design','03'],
+ ['DSLR Photography','Camera work · framing, exposure & composition','04'],
+ ['Cinematography','Visual storytelling · shot planning & lighting','05'],
+ ['Creative Production','Colour grading · sound design & post-production','06']
+].map(([name,detail,num],i)=>`<figure class="media-skill" style="--h:${i*55+260}"><span class="media-skill-num">${num} / 06</span><figcaption>${name}<small>${detail}</small></figcaption></figure>`).join('');
 (function t(ms){requestAnimationFrame(t);if(cv!=='media'||document.hidden||reducedMotion.matches)return;const p=(ms%9000)/9000,sc=p*9,sd=Math.floor(sc);g('tl').style.setProperty('--p',p);g('tc').textContent=`00:00:0${sd}:${String(Math.floor((sc-sd)*25)).padStart(2,'0')}`})(0);
 const mx=g('mx'),cx=mx.getContext('2d');let cols=[],mt=0;
 function mxs(){const dpr=Math.min(2,window.devicePixelRatio||1),w=Math.max(1,mx.clientWidth),h=Math.max(1,mx.clientHeight);mx.width=Math.round(w*dpr);mx.height=Math.round(h*dpr);cx.setTransform(dpr,0,0,dpr,0,0);cols=Array.from({length:Math.ceil(w/16)},()=>Math.random()*h/16)}
