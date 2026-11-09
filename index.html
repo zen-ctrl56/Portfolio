@@ -276,6 +276,7 @@ body[data-v="work"]{--grad:linear-gradient(100deg,#ffc400,#2ddc6a)}
 .wkl{display:flex;align-items:center;gap:.5rem;margin:0 0 .5rem;color:#8c8c93;font-weight:600}.wkl i{width:9px;height:9px;border-radius:50%;background:#ff3b3b;box-shadow:0 0 10px #ff3b3b;animation:bl 1.4s infinite}
 .wkh{margin:0 0 .5rem;font:900 clamp(2.4rem,8vw,6rem)/.9 var(--d)}.wks{margin:0 0 2rem;color:#8c8c93}
 .wkg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.wkg .wkc.full-width{grid-column:1 / -1}
 .wkc{padding:1.3rem;border-radius:1rem;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(0,255,156,.22)}
 .wk.in .wkc{animation:wkin .6s calc(.2s + var(--i)*.1s) cubic-bezier(.2,.9,.1,1) both}@keyframes wkin{from{opacity:0;transform:translateY(24px)}}
 .wkc small{color:#6fae8f;font-weight:600}.wkc h3{margin:.3rem 0 .4rem;font:900 clamp(1.6rem,3vw,2.2rem)/1.02 var(--d)}.wkc p{margin:0;color:#b4b4ba}
@@ -506,7 +507,7 @@ window.addEventListener('resize',()=>{lay();if(cv==='cyber')mxs()},{passive:true
 const NOW0={updated:'November 2026',title:"What I'm working on right now",items:[{tag:'Work',topic:'AVI machinery troubleshooting',note:'Growing the knowledge base as I learn the machines.'},{tag:'Homelab',topic:'LoRa relay networking',note:'Extending the Raspberry Pi 4 lab.'},{tag:'Cybersecurity',topic:'Bug bounty methodology',note:'Practising on labs and write-ups.'}]};
 function renderNow(d){const gr=g('wkg'),btn=g('wkb');if(!d||!Array.isArray(d.items)||!d.items.length){btn.hidden=true;return}
  const mk=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
- gr.textContent='';d.items.slice(0,6).forEach((it,k)=>{const c=mk('article','wkc');c.style.setProperty('--i',k);c.style.setProperty('--p',(typeof it.progress==='number'?Math.max(0,Math.min(100,it.progress)):100)+'%');if(it.tag)c.append(mk('small','',it.tag));c.append(mk('h3','',it.topic||''));if(it.note)c.append(mk('p','',it.note));const percent=typeof it.progress==='number'?Math.max(0,Math.min(100,it.progress)):100;c.append(mk('span','now-percent',Math.round(percent)+'%'));gr.append(c)});
+ gr.textContent='';d.items.slice(0,6).forEach((it,k)=>{const c=mk('article',it.fullWidth?'wkc full-width':'wkc');c.style.setProperty('--i',k);c.style.setProperty('--p',(typeof it.progress==='number'?Math.max(0,Math.min(100,it.progress)):100)+'%');if(it.tag)c.append(mk('small','',it.tag));c.append(mk('h3','',it.topic||''));if(it.note)c.append(mk('p','',it.note));const percent=typeof it.progress==='number'?Math.max(0,Math.min(100,it.progress)):100;c.append(mk('span','now-percent',Math.round(percent)+'%'));gr.append(c)});
  g('wkt').textContent=d.title||"What I'm working on";g('wks').textContent=d.updated?'Updated '+d.updated:'';btn.hidden=false}
 const mxc=g('mxt'),mcx=mxc.getContext('2d'),CH='01<>/{}[]()=+*#$%&';let mrun=false;
 function matrixTransition(mid,end){
