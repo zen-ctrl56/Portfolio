@@ -264,19 +264,6 @@ body[data-v="work"]{--grad:linear-gradient(100deg,#ffc400,#2ddc6a)}
 @media(max-width:760px){.kb{grid-template-columns:1fr}}
 .pw{mix-blend-mode:darken}.pc h3{font-size:clamp(1.5rem,2.1vw,2.2rem);overflow-wrap:break-word}@media(min-width:761px){.hps{grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}}
 
-/* Merdeka film feature */
-.film-feature{display:grid;grid-template-columns:minmax(210px,.75fr) minmax(0,1.25fr);gap:clamp(1.5rem,5vw,4rem);align-items:center;padding:clamp(1.2rem,3vw,2.4rem);border-radius:1.3rem;background:#141118;color:#f7f3f7;box-shadow:0 20px 60px rgba(35,10,45,.14)}
-.film-poster{width:100%;max-height:590px;aspect-ratio:1024/1449;object-fit:cover;object-position:center top;border-radius:.65rem;box-shadow:0 16px 40px rgba(0,0,0,.4)}
-.film-kicker{display:inline-block;font-weight:700;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:#fbbf24}
-.film-feature h3{font:900 clamp(3rem,7vw,6rem)/.88 var(--d);margin:1rem 0}
-.film-feature p{color:#c9c2ce;max-width:45ch}
-.film-quote{font-size:clamp(1.15rem,2.5vw,1.5rem);font-style:italic;color:#fff!important}
-.film-tags{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:1.5rem}
-.film-tags span{padding:.4rem .85rem;border:1px solid #55445d;border-radius:99px;font-size:.8rem}
-@media(max-width:680px){.film-feature{grid-template-columns:1fr}.film-poster{max-height:500px;object-fit:contain;background:#08070a}}
-
-/* Editable Now panel integration */
-.now-open{position:fixed;z-index:45;right:1rem;bottom:1rem;border:1px solid #00ff9c;background:#07110c;color:#caffdf;border-radius:999px;padding:.85rem 1.2rem;font:700 .9rem Archivo,system-ui;cursor:pointer;box-shadow:0 10px 35px #0007}.now-panel[hidden]{display:none!important}.now-panel{position:fixed;inset:0;z-index:90;overflow:auto;background:#030807;color:#e2fff0;padding:clamp(1.2rem,5vw,4rem)}.now-inner{max-width:960px;margin:5vh auto}.now-panel h2{font:900 clamp(3rem,9vw,7rem)/.9 var(--d);margin:.6rem 0 1rem}.now-meta{color:#00ff9c}.now-close{float:right;background:transparent;color:#fff;border:1px solid #4a6658;border-radius:99px;padding:.65rem 1rem;cursor:pointer}.now-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:2rem}.now-card{padding:1.4rem;border:1px solid #285340;border-radius:1rem;background:#091810}.now-card small{color:#00ff9c}.now-card h3{font:900 1.9rem/1 var(--d);margin:.8rem 0}.now-card p{color:#a7c3b4}.now-bar{height:3px;background:#19372a;margin-top:1.4rem}.now-bar i{display:block;height:100%;background:#00ff9c;width:var(--progress,100%)}@media(max-width:560px){.now-open{right:.7rem;bottom:.7rem;padding:.7rem 1rem}}
 </style></head><body><a class="skip" href="#explore">Skip to portfolio paths</a><div class="pg" id="pg"></div><nav class="nv" aria-label="Portfolio pages"><button data-go="home">Home</button><button data-go="mech">Mechatronics</button><button data-go="work">Experience</button><button data-go="cyber">Cybersecurity</button><button data-go="media">Multimedia</button></nav><div class="wp" id="wp" aria-hidden="true"><b id="wpt"></b></div>
 <div class="vw" id="v-home"><header class="hero" id="hero">
  <div class="top"><span><b>Muhammad Faris Hakim bin Abdul Rahman</b>Mechatronics technician building things that sense, decide and move.</span><span class="live"><i></i><span class="lg">Currently working as </span>AVI Technician at Flextronics</span></div>
@@ -370,21 +357,7 @@ body[data-v="work"]{--grad:linear-gradient(100deg,#ffc400,#2ddc6a)}
 </div>
 <div class="vw v-media" id="v-media" hidden>
  <section class="mh"><p class="lab">Multimedia</p><h1 class="mg gt">Frames, motion, sound.</h1><div class="tl" id="tl"><span class="tc" id="tc">00:00:00:00</span><i class="ph"></i></div></section>
- <section class="sec" aria-labelledby="merdeka-film-heading">
- <p class="lab">Featured film / Merdeka Special</p>
- <h2 class="h2 sh2" id="merdeka-film-heading">Movie for Merdeka.</h2>
- <article class="film-feature">
-  <img class="film-poster" src="OPS BADAI HITAM (2).png" alt="OPS: Badai Hitam — Merdeka Special film poster featuring the cast against the Malaysian flag" loading="lazy" decoding="async">
-  <div class="film-details">
-   <span class="film-kicker">Merdeka Special · Film project</span>
-   <h3>OPS:<br>BADAI HITAM</h3>
-   <p class="film-quote">“Jiwa kami perisai untuk Malaysia.”</p>
-   <p>A patriotic Merdeka-themed movie project presented as part of the multimedia portfolio.</p>
-   <div class="film-tags"><span>Film</span><span>Merdeka</span><span>Multimedia</span></div>
-  </div>
- </article>
-</section>
-<section class="sec"><p class="lab">Visual studies</p><h2 class="h2 sh2">The creative side.</h2><div class="fs" id="fs"></div></section>
+ <section class="sec"><p class="lab">Visual studies</p><h2 class="h2 sh2">The creative side.</h2><div class="fs" id="fs"></div></section>
 </div>
 <footer class="ct">
  <div class="cg"><h2 class="mega gt">Let’s build.</h2>
@@ -515,9 +488,5 @@ window.addEventListener('resize',()=>{lay();if(cv==='cyber')mxs()},{passive:true
 view(PG[location.hash.slice(1)]?location.hash.slice(1):'home',false);
 
 
-// External editable updates, with a safe offline fallback.
-const nowFallback={updated:"November 2026",title:"What I'm working on right now",items:[{tag:"Work",topic:"AVI machinery troubleshooting",note:"Growing the knowledge base as I learn the machines."},{tag:"Homelab",topic:"LoRa relay networking",note:"Extending the Raspberry Pi 4 lab."},{tag:"Cybersecurity",topic:"Bug bounty methodology",note:"Practising on labs and write-ups."}]};
-function showNowData(data){const open=document.getElementById('now-open'),grid=document.getElementById('now-grid');if(!data||!Array.isArray(data.items)||!data.items.length){open.hidden=true;return}open.hidden=false;document.getElementById('now-title').textContent=data.title||'Current projects';document.getElementById('now-updated').textContent=data.updated?'UPDATED '+data.updated:'';grid.replaceChildren();data.items.slice(0,6).forEach(item=>{const card=document.createElement('article');card.className='now-card';const tag=document.createElement('small');tag.textContent=item.tag||'Project';const title=document.createElement('h3');title.textContent=item.topic||'';const desc=document.createElement('p');desc.textContent=item.note||'';const bar=document.createElement('div');bar.className='now-bar';const fill=document.createElement('i');fill.style.setProperty('--progress',Math.max(0,Math.min(100,Number(item.progress??100)))+'%');bar.append(fill);card.append(tag,title,desc,bar);grid.append(card)})}
-showNowData(nowFallback);const nowPanel=document.getElementById('now-panel'),nowOpen=document.getElementById('now-open');function closeNow(){nowPanel.hidden=true;nowOpen.setAttribute('aria-expanded','false');document.body.style.overflow='';nowOpen.focus()}nowOpen.addEventListener('click',()=>{nowPanel.hidden=false;nowOpen.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';document.getElementById('now-close').focus()});document.getElementById('now-close').addEventListener('click',closeNow);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!nowPanel.hidden)closeNow()});const nowScript=document.createElement('script');nowScript.src='now.js';nowScript.onload=()=>{if(window.NOW)showNowData(window.NOW)};document.head.append(nowScript);
 </script>
-<button type="button" class="now-open" id="now-open" aria-controls="now-panel" aria-expanded="false">● NOW / UPDATES</button><aside class="now-panel" id="now-panel" role="dialog" aria-modal="true" aria-label="Current projects" hidden><div class="now-inner"><button class="now-close" id="now-close" type="button">Close ✕</button><p class="now-meta" id="now-updated"></p><h2 id="now-title">What I'm working on right now</h2><div class="now-grid" id="now-grid"></div></div></aside></body></html>
+</body></html>
