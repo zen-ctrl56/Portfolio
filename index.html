@@ -397,9 +397,25 @@ body[data-v="work"]{--grad:linear-gradient(100deg,#ffc400,#2ddc6a)}
  <dl class="cl"><div><dt>Email</dt><dd><a href="mailto:f4r15h4k1m@gmail.com">f4r15h4k1m@gmail.com</a></dd></div><div><dt>Phone</dt><dd><a href="tel:+601129840526">011-29840526</a></dd></div><div><dt>Location</dt><dd>Pendang, Kedah</dd></div></dl></div>
  <p class="ft">© 2026 Muhammad Faris Hakim bin Abdul Rahman. Ducati Panigale V4 S drawn in SVG.</p>
 </footer>
+<script src="now.js"></script>
 <script>
 
-const g=i=>document.getElementById(i),$$=s=>[...document.querySelectorAll(s)];
+const g=i=>document.getElementById(i),$=s=>[...document.querySelectorAll(s)];
+if(window.NOW?.items?.length){
+ const section=document.createElement('section');section.className='sec';section.id='current-focus';
+ const label=document.createElement('p');label.className='lab';label.textContent='NOW / '+(window.NOW.updated||'Current');
+ const heading=document.createElement('h2');heading.className='h2 sh2';heading.textContent=window.NOW.title||'Current focus';
+ const cards=document.createElement('div');cards.className='skg';
+ window.NOW.items.slice(0,6).forEach(item=>{
+  const article=document.createElement('article');article.className='sc';
+  const tag=document.createElement('b');tag.textContent=item.tag||'Focus';
+  const title=document.createElement('h3');title.textContent=item.topic||'';
+  const note=document.createElement('small');note.textContent=item.note||'';
+  article.append(tag,title,note);cards.append(article);
+ });
+ section.append(label,heading,cards);g('v-home').append(section);
+}
+
 const S=[{l:'Education',y:'2023',t:'Diploma in Mechatronics Technology',c:'ADTEC Shah Alam, 2023 to 2026',d:'Also completed the Basic Civil Defence course (Kursus Asas Pertahanan Awam) in 2023.'},
 {l:'Activities',y:'Build',t:'Automation and assembly systems',c:'ADTEC Shah Alam',d:'Actively involved in automation and assembly system projects, plus embedded systems projects: microcontroller-based systems with sensors, actuators and display modules.'},
 {l:'Industry',y:'Intern',t:'Engineering Technician',c:'Flextronics',d:'Internship on a project called Nexthop.Ai.'},
