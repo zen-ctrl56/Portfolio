@@ -189,6 +189,16 @@ body[data-v="cyber"]{--grad:linear-gradient(100deg,#00ff9c,#00b7ff)}body[data-v=
 .fs figure{position:relative;margin:0;aspect-ratio:4/3;border-radius:4px;overflow:hidden;background:linear-gradient(135deg,hsl(var(--h) 80% 55%),hsl(calc(var(--h) + 70) 85% 60%));animation:hue 9s linear infinite;transition:transform .3s}.fs figure:hover{transform:scale(1.04)}
 @keyframes hue{to{filter:hue-rotate(360deg)}}
 .fs figcaption{position:absolute;left:.8rem;bottom:.6rem;color:#fff;font-weight:600}.fs small{display:block;font-weight:400;opacity:.85}
+/* Multimedia skill gallery: fixed grid prevents camera card overflow */
+.fs{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.fs .media-skill{min-width:0;width:100%;max-width:100%;isolation:isolate;aspect-ratio:4/3;animation:none}
+.fs .media-skill-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.88);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.fs .media-skill::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.27),transparent 28%,rgba(0,0,0,.82));pointer-events:none}
+.fs .media-skill-num,.fs .media-skill figcaption{z-index:1}
+.fs .media-skill:hover .media-skill-photo{transform:scale(1.07)}
+@media(max-width:850px){.fs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.fs{grid-template-columns:minmax(0,1fr)}.fs .media-skill{aspect-ratio:5/3}}
+@media(prefers-reduced-motion:reduce){.fs .media-skill-photo{transition:none}.fs .media-skill:hover .media-skill-photo{transform:none}}
 /* Multimedia skill cards: preserve existing filmstrip and motion */
 .fs .media-skill{min-height:220px;background:linear-gradient(145deg,hsl(var(--h) 75% 43%),hsl(calc(var(--h) + 65) 75% 30%));box-shadow:inset 0 -95px 90px -50px rgba(0,0,0,.55)}
 .fs .media-skill-num{position:absolute;top:1rem;left:1rem;color:rgba(255,255,255,.85);font:700 .7rem/1.2 monospace;letter-spacing:.14em}
@@ -441,13 +451,13 @@ new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){g('rk2').classList.ad
 const TR=[['V1',[[2,18,'#8b5cf6'],[22,12,'#ec4899'],[37,25,'#fbbf24'],[65,14,'#8b5cf6'],[82,16,'#ec4899']]],['V2',[[10,14,'#ec4899'],[28,20,'#8b5cf6'],[52,10,'#fbbf24'],[70,22,'#ec4899']]],['A1',[[0,30,'#38bdf8'],[33,22,'#38bdf8'],[58,18,'#38bdf8'],[80,18,'#38bdf8']]]];
 g('tl').insertAdjacentHTML('afterbegin',TR.map(([n,c])=>`<div class="tk2" data-n="${n}">${c.map(([l,w,k])=>`<i style="left:${l}%;width:${w}%;background:${k}"></i>`).join('')}</div>`).join(''));
 g('fs').innerHTML=[
- ['CapCut','Video editing · pacing, transitions & short-form cuts','01'],
- ['After Effects','Motion graphics · compositing & animated typography','02'],
- ['Adobe Photoshop','Photo editing · retouching & visual design','03'],
- ['DSLR Photography','Camera work · framing, exposure & composition','04'],
- ['Cinematography','Visual storytelling · shot planning & lighting','05'],
- ['Creative Production','Colour grading · sound design & post-production','06']
-].map(([name,detail,num],i)=>`<figure class="media-skill" style="--h:${i*55+260}"><span class="media-skill-num">${num} / 06</span><figcaption>${name}<small>${detail}</small></figcaption></figure>`).join('');
+ ['CapCut','Video editing · pacing, transitions & short-form cuts','01','https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80'],
+ ['After Effects','Motion graphics · compositing & animated typography','02','https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'],
+ ['Adobe Photoshop','Photo editing · retouching & visual design','03','https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&q=80'],
+ ['DSLR Photography','Camera work · framing, exposure & composition','04','https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&q=80'],
+ ['Cinematography','Visual storytelling · shot planning & lighting','05','https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80'],
+ ['Creative Production','Colour grading · sound design & post-production','06','https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=800&q=80']
+].map(([name,detail,num,photo],i)=>`<figure class="media-skill" style="--h:${i*55+260}"><img class="media-skill-photo" src="${photo}" alt="" loading="lazy" decoding="async"><span class="media-skill-num">${num} / 06</span><figcaption>${name}<small>${detail}</small></figcaption></figure>`).join('');
 (function t(ms){requestAnimationFrame(t);if(cv!=='media'||document.hidden||reducedMotion.matches)return;const p=(ms%9000)/9000,sc=p*9,sd=Math.floor(sc);g('tl').style.setProperty('--p',p);g('tc').textContent=`00:00:0${sd}:${String(Math.floor((sc-sd)*25)).padStart(2,'0')}`})(0);
 const mx=g('mx'),cx=mx.getContext('2d');let cols=[],mt=0;
 function mxs(){const dpr=Math.min(2,window.devicePixelRatio||1),w=Math.max(1,mx.clientWidth),h=Math.max(1,mx.clientHeight);mx.width=Math.round(w*dpr);mx.height=Math.round(h*dpr);cx.setTransform(dpr,0,0,dpr,0,0);cols=Array.from({length:Math.ceil(w/16)},()=>Math.random()*h/16)}
