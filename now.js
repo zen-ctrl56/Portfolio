@@ -21,6 +21,12 @@ window.NOW = {
       topic: "Learning AI automation",
       note: "Practising with Activepieces, n8n, and Claude for service automation.",
       progress: 15
+    },
+    {
+      tag: "Automation",
+      topic: "AEGIS AI",
+      note: "My own Personal AI hosted for Personal Use , featuring security functions.",
+      progress: 68
     }
   ]
 };
