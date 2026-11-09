@@ -25,6 +25,7 @@ window.NOW = {
     {
       tag: "Automation",
       topic: "AEGIS AI",
+      fullWidth: true,
       note: "My own Personal AI hosted for Personal Use , featuring security functions.",
       progress: 68
     }
